@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Tile from './Tile';
-// import { getCheckRow } from '../../Logic/ResultChecker';
+import { getCheckRow } from '../../Logic/ResultChecker';
 import { TileValue } from '../../Enums/TileValue';
 import { Player } from '../../Enums/Player';
 
@@ -38,9 +38,11 @@ class Board extends React.Component<BoardProps, BoardState> {
         this.setState({tileValues: tileInfos, player: (playerValue === Player.Cross ? Player.Circle : Player.Cross)});
 
         // Check if there's a Tic to the fckn Toe
-        // const {isDone: done, winner: winningPlayer} = getCheckRow(tileInfos);
-        // alert('Is game finished? ' + done + ' - Winning player: ' + winningPlayer );
+        const {isDone: done, winner: winningPlayer} = getCheckRow(tileInfos);
 
+        if ( done ) {
+             alert('Player ' + winningPlayer + ' won!');
+        }
     }
 
     createTiles() {
