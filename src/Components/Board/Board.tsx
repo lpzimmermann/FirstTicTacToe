@@ -1,15 +1,17 @@
 import * as React from 'react';
 import Tile from './Tile';
+// import { getCheckRow } from '../../Logic/ResultChecker';
+import { TileValue } from '../../Enums/TileValue';
+import { Player } from '../../Enums/Player';
 
 interface BoardProps {
 
 }
 
 interface BoardState {
-    isFree: boolean[];
-    isCircle: boolean[];
+    tileValues: TileValue[];
 
-    player: number;
+    player: Player;
 }
 
 class Board extends React.Component<BoardProps, BoardState> {
@@ -18,25 +20,27 @@ class Board extends React.Component<BoardProps, BoardState> {
         super(props);
 
         const inits = [];
-        const inits2 = [];
-        
+
         for (let y = 0; y < 9; y++) {
-            inits.push(true);
-            inits2.push(false);
+            inits.push(TileValue.Empty);
         }
 
-        this.state = {isFree: inits, isCircle: inits2, player: 0};
+        this.state = {tileValues: inits, player: Player.Cross};
 
         this.createTiles();
     }
 
     updateTileValue(position: number) {
-        const {isFree: freeValues, isCircle: circleValues, player: playerValue} = this.state;
+        const {tileValues: tileInfos, player: playerValue} = this.state;
 
-        freeValues[position] = false;
-        circleValues[position] = (playerValue !== 0);
+        tileInfos[position] = playerValue.valueOf();
 
-        this.setState({isFree: freeValues, isCircle: circleValues, player: (playerValue === 0 ? 1 : 0)});
+        this.setState({tileValues: tileInfos, player: (playerValue === Player.Cross ? Player.Circle : Player.Cross)});
+
+        // Check if there's a Tic to the fckn Toe
+        // const {isDone: done, winner: winningPlayer} = getCheckRow(tileInfos);
+        // alert('Is game finished? ' + done + ' - Winning player: ' + winningPlayer );
+
     }
 
     createTiles() {
@@ -47,11 +51,9 @@ class Board extends React.Component<BoardProps, BoardState> {
 
             tiles.push(
                 <Tile
-                    isFree={this.state.isFree[y]}
-                    isCircle={this.state.isCircle[y]}
+                    tileValue={this.state.tileValues[y]}
                     onClick={() => {
                                  this.updateTileValue(y);
-
                                  }
                              }
                 />

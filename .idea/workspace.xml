@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9cce53c7-cd48-4c53-a004-ad691ac9c839" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Enums/Player.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Enums/TileValue.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Logic/ResultChecker.ts" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/Components/Board/Board.tsx" afterPath="$PROJECT_DIR$/src/Components/Board/Board.tsx" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Board/Tile.tsx" afterPath="$PROJECT_DIR$/src/Components/Board/Tile.tsx" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -20,11 +24,11 @@
       <file leaf-file-name="Tile.tsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Components/Board/Tile.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="219">
-              <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+            <state relative-caret-position="195">
+              <caret line="13" column="21" lean-forward="true" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
-                <marker date="1523280011528" expanded="true" signature="891:918" ph="..." />
+                <marker date="1523368550538" expanded="true" signature="974:1001" ph="..." />
               </folding>
             </state>
           </provider>
@@ -33,11 +37,42 @@
       <file leaf-file-name="Board.tsx" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Components/Board/Board.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="263">
-              <caret line="21" column="8" lean-forward="false" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
+            <state relative-caret-position="253">
+              <caret line="39" column="11" lean-forward="false" selection-start-line="39" selection-start-column="11" selection-end-line="39" selection-end-column="11" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
+                <element signature="e#119#169#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Player.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Enums/Player.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="3" column="1" lean-forward="true" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ResultChecker.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Logic/ResultChecker.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="10" column="8" lean-forward="false" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TileValue.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Enums/TileValue.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="3" column="13" lean-forward="false" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -104,6 +139,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -124,12 +160,14 @@
         <option value="$PROJECT_DIR$/src/Components/XSymbol.tsx" />
         <option value="$PROJECT_DIR$/src/Components/OSymbol.tsx" />
         <option value="$PROJECT_DIR$/src/Components/Tile.tsx" />
-        <option value="$PROJECT_DIR$/src/Components/Board/Tile.tsx" />
         <option value="$PROJECT_DIR$/src/Components/Symbol/XSymbol.tsx" />
         <option value="$PROJECT_DIR$/src/Components/Symbol/OSymbol.tsx" />
         <option value="$PROJECT_DIR$/src/Components/Symbol/symbols.css" />
         <option value="$PROJECT_DIR$/src/App.tsx" />
         <option value="$PROJECT_DIR$/src/App.css" />
+        <option value="$PROJECT_DIR$/src/Enums/Player.ts" />
+        <option value="$PROJECT_DIR$/src/Components/Board/Tile.tsx" />
+        <option value="$PROJECT_DIR$/src/Logic/ResultChecker.ts" />
         <option value="$PROJECT_DIR$/src/Components/Board/Board.tsx" />
       </list>
     </option>
@@ -182,21 +220,7 @@
               <item name="FirstTicTacToe" type="b2602c69:ProjectViewProjectNode" />
               <item name="FirstTicTacToe" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Components" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FirstTicTacToe" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FirstTicTacToe" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Components" type="462c0819:PsiDirectoryNode" />
-              <item name="Board" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FirstTicTacToe" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FirstTicTacToe" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Components" type="462c0819:PsiDirectoryNode" />
-              <item name="Symbol" type="462c0819:PsiDirectoryNode" />
+              <item name="Enums" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -279,12 +303,12 @@
       <workItem from="1523279096729" duration="93000" />
       <workItem from="1523279192940" duration="824000" />
       <workItem from="1523343921392" duration="2685000" />
-      <workItem from="1523358226496" duration="2396000" />
+      <workItem from="1523358226496" duration="5965000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26800000" />
+    <option name="totallyTimeSpent" value="30369000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="829" extended-state="0" />
@@ -324,41 +348,13 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Components/Symbol/OSymbol.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="53" lean-forward="false" selection-start-line="19" selection-start-column="53" selection-end-line="19" selection-end-column="53" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Symbol/symbols.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/Board/Board.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="39" column="36" lean-forward="true" selection-start-line="39" selection-start-column="36" selection-end-line="39" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Components/Board/Tile.tsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
           <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
-            <marker date="1523280011528" expanded="true" signature="891:918" ph="..." />
+            <marker date="1523368550538" expanded="true" signature="974:1001" ph="..." />
           </folding>
         </state>
       </provider>
@@ -434,6 +430,7 @@
           <caret line="33" column="29" lean-forward="false" selection-start-line="33" selection-start-column="29" selection-end-line="33" selection-end-column="29" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
+            <element signature="e#119#169#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -444,7 +441,7 @@
           <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
-            <marker date="1523280011528" expanded="true" signature="891:918" ph="..." />
+            <marker date="1523368550538" expanded="true" signature="974:1001" ph="..." />
           </folding>
         </state>
       </provider>
@@ -516,6 +513,7 @@
           <caret line="33" column="29" lean-forward="false" selection-start-line="33" selection-start-column="29" selection-end-line="33" selection-end-column="29" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
+            <element signature="e#119#169#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -544,7 +542,7 @@
           <caret line="9" column="23" lean-forward="false" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
-            <marker date="1523280011528" expanded="true" signature="891:918" ph="..." />
+            <marker date="1523368550538" expanded="true" signature="974:1001" ph="..." />
           </folding>
         </state>
       </provider>
@@ -589,7 +587,7 @@
           <caret line="38" column="21" lean-forward="true" selection-start-line="38" selection-start-column="21" selection-end-line="38" selection-end-column="21" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
-            <marker date="1523280011528" expanded="true" signature="891:918" ph="..." />
+            <marker date="1523368550538" expanded="true" signature="974:1001" ph="..." />
           </folding>
         </state>
       </provider>
@@ -600,6 +598,7 @@
           <caret line="54" column="0" lean-forward="true" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
+            <element signature="e#119#169#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -714,23 +713,48 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Enums/TileValue.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="13" lean-forward="false" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Enums/Player.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="1" lean-forward="true" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Components/Board/Tile.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+        <state relative-caret-position="195">
+          <caret line="13" column="21" lean-forward="true" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
-            <marker date="1523280011528" expanded="true" signature="891:918" ph="..." />
+            <marker date="1523368550538" expanded="true" signature="974:1001" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Logic/ResultChecker.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="8" lean-forward="false" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Components/Board/Board.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="21" column="8" lean-forward="false" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
+        <state relative-caret-position="253">
+          <caret line="39" column="11" lean-forward="false" selection-start-line="39" selection-start-column="11" selection-end-line="39" selection-end-column="11" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
+            <element signature="e#119#169#0" expanded="true" />
           </folding>
         </state>
       </provider>
