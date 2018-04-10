@@ -1,0 +1,34 @@
+.animate-x-big-symbol {
+    animation-duration: 0.75s;
+    animation-name: add-icon-big-x;
+}
+
+.animate-o-big-symbol {
+    animation-duration: 0.75s;
+    animation-name: add-icon-big-o;
+}
+
+.animate-no-winner-big-symbol {
+    animation-duration: 0.75s;
+    animation-name: add-icon-big-no-winner;
+}
+
+.animate-o, .animate-x {
+    animation-duration: 0.75s;
+    animation-name: add-icon;
+}
+
+@keyframes add-icon {
+    0% {
+        font-size: 8vmin;
+    }
+    25% {
+        font-size: 3vmin;
+    }
+    50% {
+        font-size: 6vmin;
+    }
+    100% {
+        font-size: 4vmin;
+    }
+}
