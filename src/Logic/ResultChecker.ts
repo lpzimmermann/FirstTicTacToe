@@ -1,23 +1,26 @@
 import { TileValue } from '../Enums/TileValue';
+import { Player } from '../Enums/Player';
 
 export interface CheckRow {
     isDone: boolean;
-    winner: boolean;
+    winner: Player;
 }
 
 export const getCheckRow = (tileValues: TileValue[]) => {
 
-    if (tileValues[0] === tileValues[1] && tileValues[1] === tileValues[2].valueOf()
-        && tileValues[0] !== TileValue.Empty ) {
-        return{
-            isDone: true,
-            winner: tileValues[0]
-        };
-    } else {
-        return{
-            isDone: false,
-            winner: null
-        };
+    for (let y = 0; y < 3; y++) {
+        if (tileValues[y] === tileValues[y + 1] && tileValues[y + 1] === tileValues[y + 2].valueOf()
+            && tileValues[y] !== TileValue.Empty ) {
+            return {
+                isDone: true,
+                winner: tileValues[y].valueOf()
+            };
+        }
     }
+
+    return {
+        isDone: false,
+        winner: null
+    };
 
 };
