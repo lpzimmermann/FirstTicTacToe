@@ -18,42 +18,25 @@ class Board extends React.Component<BoardProps, BoardState> {
         super(props);
 
         const inits = [];
+        const inits2 = [];
+        
         for (let y = 0; y < 9; y++) {
             inits.push(true);
+            inits2.push(false);
         }
 
-        this.state = {isFree: inits, isCircle: inits, player: 0};
+        this.state = {isFree: inits, isCircle: inits2, player: 0};
 
         this.createTiles();
     }
 
-    updateTileValue(position: number, isCircle: boolean) {
+    updateTileValue(position: number) {
         const {isFree: freeValues, isCircle: circleValues, player: playerValue} = this.state;
 
-        const newFree = [];
-        const newCircle = [];
-        var newPlayer = playerValue;
+        freeValues[position] = false;
+        circleValues[position] = (playerValue !== 0);
 
-        for (let y = 0; y < 9; y++) {
-            if (position === y) {
-
-                newFree.push(false);
-                newCircle.push(playerValue === 0);
-
-                if (playerValue === 0) {
-                    newPlayer = 1;
-                } else {
-                    newPlayer = 0;
-                }
-
-            } else {
-                newFree.push(freeValues[y]);
-                newCircle.push(circleValues[y]);
-            }
-
-        }
-
-        this.setState({isFree: newFree, isCircle: newCircle, player: newPlayer});
+        this.setState({isFree: freeValues, isCircle: circleValues, player: (playerValue === 0 ? 1 : 0)});
     }
 
     createTiles() {
@@ -67,7 +50,7 @@ class Board extends React.Component<BoardProps, BoardState> {
                     isFree={this.state.isFree[y]}
                     isCircle={this.state.isCircle[y]}
                     onClick={() => {
-                                 this.updateTileValue(y, false);
+                                 this.updateTileValue(y);
 
                                  }
                              }
