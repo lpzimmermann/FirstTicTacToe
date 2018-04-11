@@ -7,6 +7,7 @@ import { TileValue } from '../../Enums/TileValue';
 interface TileProps {
 
     tileValue: TileValue;
+    blocked: boolean;
     onClick: () => void;
 
 }
@@ -41,7 +42,7 @@ class Tile extends React.Component<TileProps, TileState> {
 
     render() {
 
-        const {tileValue, onClick} = this.props;
+        const {tileValue, blocked, onClick} = this.props;
 
         let tileState = TileValue.Empty ? 'empty' : (tileValue === TileValue.Circle ? 'circle' : 'cross');
 
@@ -49,7 +50,7 @@ class Tile extends React.Component<TileProps, TileState> {
             <div
                 className={`tile tile-${tileState}`}
                 onClick={() => {
-                    if (tileValue === TileValue.Empty) {
+                    if (tileValue === TileValue.Empty && !blocked) {
                         onClick();
                     }
                 }}

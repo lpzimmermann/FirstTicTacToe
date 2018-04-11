@@ -10,7 +10,7 @@ interface BoardProps {
 
 interface BoardState {
     tileValues: TileValue[];
-
+    finished: boolean;
     player: Player;
 }
 
@@ -25,24 +25,30 @@ class Board extends React.Component<BoardProps, BoardState> {
             inits.push(TileValue.Empty);
         }
 
-        this.state = {tileValues: inits, player: Player.Cross};
+        this.state = {tileValues: inits, finished: false, player: Player.Cross};
 
         this.createTiles();
     }
 
     updateTileValue(position: number) {
         const {tileValues: tileInfos, player: playerValue} = this.state;
+        var finished = false;
 
         tileInfos[position] = playerValue.valueOf();
-
-        this.setState({tileValues: tileInfos, player: (playerValue === Player.Cross ? Player.Circle : Player.Cross)});
 
         // Check if there's a Tic to the fckn Toe
         const {isDone: done, winner: winningPlayer} = getCheckRow(tileInfos);
 
-        if ( done ) {
-             alert('Player ' + winningPlayer + ' won!');
+        var nextPlayer = (playerValue === Player.Cross ? Player.Circle : Player.Cross);
+        if ( done && winningPlayer !== null) {
+            finished = true;
+            nextPlayer = winningPlayer;
+            alert('Player ' + nextPlayer + ' won!');
         }
+
+        this.setState({tileValues: tileInfos, finished: finished,
+            player: nextPlayer});
+
     }
 
     createTiles() {
@@ -54,6 +60,7 @@ class Board extends React.Component<BoardProps, BoardState> {
             tiles.push(
                 <Tile
                     tileValue={this.state.tileValues[y]}
+                    blocked={this.state.finished}
                     onClick={() => {
                                  this.updateTileValue(y);
                                  }
@@ -65,9 +72,20 @@ class Board extends React.Component<BoardProps, BoardState> {
         return tiles;
     }
 
+    getWinnerLabel() {
+        if (this.state.finished) {
+            return(
+                <p>The winner is {this.state.player}</p>
+            );
+        } else {
+            return '';
+        }
+    }
+
     render() {
 
         return (
+
             <div className={`board`}>
 
             {this.createTiles()}

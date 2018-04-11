@@ -9,13 +9,33 @@ export interface CheckRow {
 export const getCheckRow = (tileValues: TileValue[]) => {
 
     for (let y = 0; y < 3; y++) {
-        if (tileValues[y] === tileValues[y + 1] && tileValues[y + 1] === tileValues[y + 2].valueOf()
+        if (tileValues[y] === tileValues[y + 1] && tileValues[y + 1] === tileValues[y + 2]
             && tileValues[y] !== TileValue.Empty ) {
             return {
                 isDone: true,
                 winner: tileValues[y].valueOf()
             };
+        } else if (tileValues[y] === tileValues[y + 3] && tileValues[y + 3] === tileValues[y + 6]
+            && tileValues[y] !== TileValue.Empty ) {
+            return{
+                isDone: true,
+                winner: tileValues[y].valueOf()
+            };
         }
+    }
+
+    if (tileValues[0] === tileValues[4] && tileValues[4] === tileValues[8] &&
+    tileValues[0] !== TileValue.Empty) {
+        return{
+            isDone: true,
+            winner: tileValues[0].valueOf()
+        };
+    } else if (tileValues[2] === tileValues[4] && tileValues[4] === tileValues[6] &&
+        tileValues[2] !== TileValue.Empty) {
+        return{
+            isDone: true,
+            winner: tileValues[2].valueOf()
+        };
     }
 
     return {
