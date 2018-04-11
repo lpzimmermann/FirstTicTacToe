@@ -44,6 +44,8 @@ class Board extends React.Component<BoardProps, BoardState> {
             finished = true;
             nextPlayer = winningPlayer;
             alert('Player ' + nextPlayer + ' won!');
+        } else if ( done && winningPlayer === null) {
+            finished = true;
         }
 
         this.setState({tileValues: tileInfos, finished: finished,

@@ -38,8 +38,16 @@ export const getCheckRow = (tileValues: TileValue[]) => {
         };
     }
 
+    var isDone = true;
+    for (let y = 0; y < tileValues.length; y++) {
+        if (tileValues[y] === TileValue.Empty) {
+            isDone = false;
+            break;
+        }
+    }
+
     return {
-        isDone: false,
+        isDone: isDone,
         winner: null
     };
 
