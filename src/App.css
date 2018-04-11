@@ -44,20 +44,31 @@
 
 .material-icons {
 
-  font-size: 4vmin !important;
+  font-size: 3.5vmin !important;
   font-weight:400 !important;
 }
 
 .tile{
   width:5vmin;
   height:5vmin;
-  background-color: #65b0ff;
   color: #fff;
   display: -ms-flexbox;
   display: flex;
   align-items: center;
   justify-content: center;
 
+}
+
+.tile-empty{
+  background-color: #65b0ff;
+}
+
+.tile-filled{
+  background-color: #a0c1ff;
+}
+
+.tile-blocked{
+  background-color: #90a4af;
 }
 
 .board-center-div{
