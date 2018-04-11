@@ -9,11 +9,11 @@ export interface CheckRow {
 export const getCheckRow = (tileValues: TileValue[]) => {
 
     for (let y = 0; y < 3; y++) {
-        if (tileValues[y] === tileValues[y + 1] && tileValues[y + 1] === tileValues[y + 2]
-            && tileValues[y] !== TileValue.Empty ) {
+        if (tileValues[0 + (3 * y)] === tileValues[1 + (3 * y)] && tileValues[1 + (3 * y)] === tileValues[2 + (3 * y)]
+            && tileValues[0 + (3 * y)] !== TileValue.Empty ) {
             return {
                 isDone: true,
-                winner: tileValues[y].valueOf()
+                winner: tileValues[0 + (3 * y)].valueOf()
             };
         } else if (tileValues[y] === tileValues[y + 3] && tileValues[y + 3] === tileValues[y + 6]
             && tileValues[y] !== TileValue.Empty ) {
