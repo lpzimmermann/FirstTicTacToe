@@ -29,27 +29,46 @@
 
 .board {
   display: grid;
-  grid-template-columns: 6vmin 6vmin 6vmin;
-  grid-template-rows: 6vmin 6vmin 6vmin;
-  grid-gap: .7vmin;
+  grid-template-columns: 5vmin 5vmin 5vmin;
+  grid-template-rows: 5vmin 5vmin 5vmin;
+  grid-gap: .4vmin;
+}
+
+.container{
+  display: grid;
+  grid-template-columns: 15.8vmin 15.8vmin 15.8vmin;
+  grid-template-rows: 15.8vmin 15.8vmin 15.8vmin;
+  grid-gap: 2vmin;
+  margin-top:200px;
 }
 
 .material-icons {
 
-  font-size: 4vmin !important;
+  font-size: 3.5vmin !important;
   font-weight:400 !important;
 }
 
 .tile{
-  width:50px;
-  height:50px;
-  background-color: #65b0ff;
+  width:5vmin;
+  height:5vmin;
   color: #fff;
   display: -ms-flexbox;
   display: flex;
   align-items: center;
   justify-content: center;
 
+}
+
+.tile-empty{
+  background-color: #65b0ff;
+}
+
+.tile-filled{
+  background-color: #a0c1ff;
+}
+
+.tile-blocked{
+  background-color: #90a4af;
 }
 
 .board-center-div{

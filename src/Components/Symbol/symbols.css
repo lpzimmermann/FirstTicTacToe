@@ -5,15 +5,15 @@
 
 @keyframes add-icon {
     0% {
-        font-size: 8vmin;
+        font-size: 7.5vmin;
     }
     25% {
-        font-size: 3vmin;
+        font-size: 2.5vmin;
     }
     50% {
-        font-size: 6vmin;
+        font-size: 5.5vmin;
     }
     100% {
-        font-size: 4vmin;
+        font-size: 3.5vmin;
     }
 }
