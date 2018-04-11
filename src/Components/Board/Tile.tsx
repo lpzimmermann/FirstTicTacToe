@@ -8,7 +8,7 @@ interface TileProps {
 
     tileValue: TileValue;
     blocked: boolean;
-    onClick: () => void;
+    onClick?: () => void;
 
 }
 
@@ -50,7 +50,7 @@ class Tile extends React.Component<TileProps, TileState> {
             <div
                 className={`tile tile-${tileState}`}
                 onClick={() => {
-                    if (tileValue === TileValue.Empty && !blocked) {
+                    if (tileValue === TileValue.Empty && !blocked && onClick) {
                         onClick();
                     }
                 }}

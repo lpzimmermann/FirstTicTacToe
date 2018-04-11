@@ -5,7 +5,8 @@ import { TileValue } from '../../Enums/TileValue';
 import { Player } from '../../Enums/Player';
 
 interface BoardProps {
-
+    blocked: boolean;
+    updateTileValue( tv: TileValue ): void;
 }
 
 interface BoardState {
@@ -25,7 +26,8 @@ class Board extends React.Component<BoardProps, BoardState> {
             inits.push(TileValue.Empty);
         }
 
-        this.state = {tileValues: inits, finished: false, player: Player.Cross};
+        alert(this.props.blocked + 'sdaf');
+        this.state = {tileValues: inits, finished: this.props.blocked, player: Player.Cross};
 
         this.createTiles();
     }
@@ -44,6 +46,7 @@ class Board extends React.Component<BoardProps, BoardState> {
             finished = true;
             nextPlayer = winningPlayer;
             alert('Player ' + nextPlayer + ' won!');
+            this.props.updateTileValue(nextPlayer.valueOf());
         } else if ( done && winningPlayer === null) {
             finished = true;
         }
