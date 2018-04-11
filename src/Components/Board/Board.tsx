@@ -26,7 +26,6 @@ class Board extends React.Component<BoardProps, BoardState> {
             inits.push(TileValue.Empty);
         }
 
-        alert(this.props.blocked + 'sdaf');
         this.state = {tileValues: inits, finished: this.props.blocked, player: Player.Cross};
 
         this.createTiles();
