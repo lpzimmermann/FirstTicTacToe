@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './App.css';
-import Board from './Components/Board/Board';
+import Container from './Components/Board/Container';
 
 const logo = require('./logo.svg');
 
@@ -17,7 +17,7 @@ class App extends React.Component {
                     <p className="App-intro">You can roast me for my code if you want but <code>I would cry.</code></p>
 
                     <div className={'board-center-div'}>
-                        <Board />
+                        <Container />
                     </div>
             </div>
         );
