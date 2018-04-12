@@ -6,7 +6,8 @@ import { Player } from '../../Enums/Player';
 
 interface BoardProps {
     blocked: boolean;
-    updateTileValue( tv: TileValue ): void;
+    position: number;
+    updateBoardValue( ps: number, tv: TileValue ): void;
 }
 
 interface BoardState {
@@ -26,10 +27,8 @@ class Board extends React.Component<BoardProps, BoardState> {
             inits.push(TileValue.Empty);
         }
 
-        alert(this.props.blocked + 'sdaf');
         this.state = {tileValues: inits, finished: this.props.blocked, player: Player.Cross};
 
-        this.createTiles();
     }
 
     updateTileValue(position: number) {
@@ -41,15 +40,18 @@ class Board extends React.Component<BoardProps, BoardState> {
         // Check if there's a Tic to the fckn Toe
         const {isDone: done, winner: winningPlayer} = getCheckRow(tileInfos);
 
-        var nextPlayer = (playerValue === Player.Cross ? Player.Circle : Player.Cross);
         if ( done && winningPlayer !== null) {
+
             finished = true;
-            nextPlayer = winningPlayer;
-            alert('Player ' + nextPlayer + ' won!');
-            this.props.updateTileValue(nextPlayer.valueOf());
-        } else if ( done && winningPlayer === null) {
+            alert('Player ' + winningPlayer + ' won!');
+
+            this.props.updateBoardValue(this.props.position, winningPlayer.valueOf());
+
+        } else if ( done && winningPlayer === null ) {
             finished = true;
         }
+
+        var nextPlayer = (playerValue === Player.Cross ? Player.Circle : Player.Cross);
 
         this.setState({tileValues: tileInfos, finished: finished,
             player: nextPlayer});
@@ -65,7 +67,7 @@ class Board extends React.Component<BoardProps, BoardState> {
             tiles.push(
                 <Tile
                     tileValue={this.state.tileValues[y]}
-                    blocked={this.state.finished}
+                    blocked={(this.props.blocked ? true : this.state.finished)}
                     onClick={() => {
                                  this.updateTileValue(y);
                                  }
@@ -75,16 +77,6 @@ class Board extends React.Component<BoardProps, BoardState> {
         }
 
         return tiles;
-    }
-
-    getWinnerLabel() {
-        if (this.state.finished) {
-            return(
-                <p>The winner is {this.state.player}</p>
-            );
-        } else {
-            return '';
-        }
     }
 
     render() {
