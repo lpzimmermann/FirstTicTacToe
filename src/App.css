@@ -42,21 +42,37 @@
   margin-top:200px;
 }
 
-.material-icons {
 
-  font-size: 3.5vmin !important;
-  font-weight:400 !important;
-}
 
 .tile{
-  width:5vmin;
-  height:5vmin;
   color: #fff;
   display: -ms-flexbox;
   display: flex;
   align-items: center;
   justify-content: center;
 
+}
+
+.tile.small {
+  width:5vmin;
+  height:5vmin;
+}
+
+.tile.small .material-icons{
+  font-size: 3.5vmin !important;
+}
+
+.tile.big {
+  width: 15.8vmin;
+  height: 15.8vmin;
+}
+
+.tile.big .material-icons{
+  font-size: 15vmin !important;
+}
+
+.material-icons {
+  font-weight:400 !important;
 }
 
 .tile-empty{

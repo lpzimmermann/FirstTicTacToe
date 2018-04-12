@@ -23,6 +23,7 @@ class Container extends React.Component<ContainerProps, ContainerState> {
 
         this.updateBoardValue = this.updateBoardValue.bind(this);
         this.createBoards = this.createBoards.bind(this);
+        this.updateActiveBoards = this.updateActiveBoards.bind(this);
 
         const inits = [];
 
@@ -42,12 +43,35 @@ class Container extends React.Component<ContainerProps, ContainerState> {
 
         const {isDone: done, winner: winningPlayer} = getCheckRow(boardValueList);
 
+        let finished = this.state.finished;
+
         if ( done ) {
              alert('The winner of the whole game is ' + winningPlayer);
+             finished = true;
         }
 
-        this.setState( { boardValues: boardValueList, finished: done, activeBoard: this.state.activeBoard,
+        this.setState( { boardValues: boardValueList, finished: finished, activeBoard: this.state.activeBoard,
             currentPlayer: this.state.currentPlayer});
+        return finished;
+    }
+
+    updateActiveBoards(position: number, finished: boolean) {
+
+        if (finished) {
+            return;
+        }
+        const newPlayer = (this.state.currentPlayer === Player.Cross ? Player.Circle : Player.Cross);
+        if (this.state.boardValues[position] === TileValue.Empty) {
+
+            this.setState( { boardValues: this.state.boardValues, finished: this.state.finished,
+                activeBoard: position, currentPlayer: newPlayer
+            });
+
+        } else {
+            this.setState( { boardValues: this.state.boardValues, finished: this.state.finished,
+                activeBoard: 10, currentPlayer: newPlayer
+            });
+        }
     }
 
     createBoards() {
@@ -57,14 +81,19 @@ class Container extends React.Component<ContainerProps, ContainerState> {
         for (let y = 0; y < 9; y++) {
             if (this.state.boardValues[y] !== TileValue.Empty) {
                 boards.push(
-                    <Tile tileValue={this.state.boardValues[y]} blocked={false}/>
+                    <Tile tileValue={this.state.boardValues[y]} blocked={false} bigTile={true}/>
                 );
             } else {
                 boards.push(
                     <Board
                         updateBoardValue={this.updateBoardValue}
-                        blocked={this.state.finished}
+                        blocked={(this.state.finished === true ? true :
+                            (this.state.activeBoard !== 10 && this.state.activeBoard !== y))}
                         position={y}
+                        getCurrentPlayer={() => {
+                            return this.state.currentPlayer;
+                        }}
+                        updateActiveBoards={this.updateActiveBoards}
                     />
                 );
             }
