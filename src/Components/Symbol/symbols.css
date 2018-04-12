@@ -1,9 +1,29 @@
-.animate-o, .animate-x {
+.tile.big .animate-o, .animate-x {
     animation-duration: 0.75s;
-    animation-name: add-icon;
+    animation-name: add-icon-big;
 }
 
-@keyframes add-icon {
+@keyframes add-icon-big {
+    0% {
+        font-size: 20vmin;
+    }
+    25% {
+        font-size: 10vmin;
+    }
+    50% {
+        font-size: 18vmin;
+    }
+    100% {
+        font-size: 15vmin;
+    }
+}
+
+.tile.small .animate-o, .animate-x {
+    animation-duration: 0.75s;
+    animation-name: add-icon-small;
+}
+
+@keyframes add-icon-small {
     0% {
         font-size: 7.5vmin;
     }

@@ -6,13 +6,15 @@ import { Player } from '../../Enums/Player';
 
 interface BoardProps {
     blocked: boolean;
-    updateTileValue( tv: TileValue ): void;
+    position: number;
+    updateBoardValue( ps: number, tv: TileValue ): boolean;
+    getCurrentPlayer(): Player;
+    updateActiveBoards( ps: number, finished: boolean): void;
 }
 
 interface BoardState {
     tileValues: TileValue[];
     finished: boolean;
-    player: Player;
 }
 
 class Board extends React.Component<BoardProps, BoardState> {
@@ -26,32 +28,30 @@ class Board extends React.Component<BoardProps, BoardState> {
             inits.push(TileValue.Empty);
         }
 
-        this.state = {tileValues: inits, finished: this.props.blocked, player: Player.Cross};
-
-        this.createTiles();
+        this.state = {tileValues: inits, finished: this.props.blocked};
     }
 
     updateTileValue(position: number) {
-        const {tileValues: tileInfos, player: playerValue} = this.state;
+        const {tileValues: tileInfos} = this.state;
         var finished = false;
 
-        tileInfos[position] = playerValue.valueOf();
+        tileInfos[position] = this.props.getCurrentPlayer().valueOf();
 
-        // Check if there's a Tic to the fckn Toe
         const {isDone: done, winner: winningPlayer} = getCheckRow(tileInfos);
+        let globalFinished = false;
 
-        var nextPlayer = (playerValue === Player.Cross ? Player.Circle : Player.Cross);
         if ( done && winningPlayer !== null) {
+
             finished = true;
-            nextPlayer = winningPlayer;
-            alert('Player ' + nextPlayer + ' won!');
-            this.props.updateTileValue(nextPlayer.valueOf());
-        } else if ( done && winningPlayer === null) {
+            globalFinished = this.props.updateBoardValue(this.props.position, winningPlayer.valueOf());
+
+        } else if ( done && winningPlayer === null ) {
             finished = true;
         }
 
-        this.setState({tileValues: tileInfos, finished: finished,
-            player: nextPlayer});
+        this.props.updateActiveBoards(position, globalFinished);
+
+        this.setState({tileValues: tileInfos, finished: (finished || this.props.blocked)});
 
     }
 
@@ -64,26 +64,17 @@ class Board extends React.Component<BoardProps, BoardState> {
             tiles.push(
                 <Tile
                     tileValue={this.state.tileValues[y]}
-                    blocked={this.state.finished}
+                    blocked={(this.props.blocked ? true : this.state.finished)}
                     onClick={() => {
                                  this.updateTileValue(y);
                                  }
                              }
+                    bigTile={false}
                 />
             );
         }
 
         return tiles;
-    }
-
-    getWinnerLabel() {
-        if (this.state.finished) {
-            return(
-                <p>The winner is {this.state.player}</p>
-            );
-        } else {
-            return '';
-        }
     }
 
     render() {
