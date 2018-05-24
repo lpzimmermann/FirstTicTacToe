@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './App.css';
-import Container from './Components/Board/Container';
+import Container from './Components/Container/Container';
 
 const logo = require('./logo.svg');
 

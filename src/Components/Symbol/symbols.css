@@ -1,4 +1,4 @@
-.tile.big .animate-o, .animate-x {
+.tile.big .animate-o, .tile.big .animate-x {
     animation-duration: 0.75s;
     animation-name: add-icon-big;
 }
@@ -18,7 +18,7 @@
     }
 }
 
-.tile.small .animate-o, .animate-x {
+.tile.small .animate-o, .tile.small .animate-x {
     animation-duration: 0.75s;
     animation-name: add-icon-small;
 }

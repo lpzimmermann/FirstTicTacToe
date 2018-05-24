@@ -34,12 +34,15 @@
   grid-gap: .4vmin;
 }
 
+.game-container{
+  margin-top:200px;
+}
+
 .container{
   display: grid;
   grid-template-columns: 15.8vmin 15.8vmin 15.8vmin;
   grid-template-rows: 15.8vmin 15.8vmin 15.8vmin;
   grid-gap: 2vmin;
-  margin-top:200px;
 }
 
 

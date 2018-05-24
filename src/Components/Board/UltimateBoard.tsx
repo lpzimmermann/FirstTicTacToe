@@ -5,20 +5,21 @@ import Tile from './Tile';
 import { getCheckRow } from '../../Logic/ResultChecker';
 import { Player } from '../../Enums/Player';
 
-interface ContainerProps {
-
+interface UltimateBoardProps {
+    updateCurrentPlayer(): void;
+    getCurrentPlayer(): Player;
+    updateFinishedValue(isF: boolean): void;
+    getFinishedValue(): boolean;
 }
 
-interface ContainerState {
+interface UltimateBoardState {
     boardValues: TileValue[];
-    finished: boolean;
     activeBoard: number;
-    currentPlayer: Player;
 }
 
-class Container extends React.Component<ContainerProps, ContainerState> {
+class UltimateBoard extends React.Component<UltimateBoardProps, UltimateBoardState> {
 
-    constructor(props: ContainerProps) {
+    constructor(props: UltimateBoardProps) {
         super( props );
 
         this.updateBoardValue = this.updateBoardValue.bind(this);
@@ -31,7 +32,7 @@ class Container extends React.Component<ContainerProps, ContainerState> {
             inits.push(TileValue.Empty);
         }
 
-        this.state = {boardValues: inits, finished: false, activeBoard: 10, currentPlayer: Player.Cross};
+        this.state = {boardValues: inits, activeBoard: 10};
 
     }
 
@@ -41,17 +42,16 @@ class Container extends React.Component<ContainerProps, ContainerState> {
 
         boardValueList[position] = value;
 
-        const {isDone: done, winner: winningPlayer} = getCheckRow(boardValueList);
+        const {isDone: done} = getCheckRow(boardValueList);
 
-        let finished = this.state.finished;
+        let finished = this.props.getFinishedValue();
 
         if ( done ) {
-             alert('The winner of the whole game is ' + winningPlayer);
              finished = true;
         }
 
-        this.setState( { boardValues: boardValueList, finished: finished, activeBoard: this.state.activeBoard,
-            currentPlayer: this.state.currentPlayer});
+        this.props.updateFinishedValue(finished);
+        this.setState( { boardValues: boardValueList, activeBoard: this.state.activeBoard});
         return finished;
     }
 
@@ -60,16 +60,18 @@ class Container extends React.Component<ContainerProps, ContainerState> {
         if (finished) {
             return;
         }
-        const newPlayer = (this.state.currentPlayer === Player.Cross ? Player.Circle : Player.Cross);
+
+        this.props.updateCurrentPlayer();
+
         if (this.state.boardValues[position] === TileValue.Empty) {
 
-            this.setState( { boardValues: this.state.boardValues, finished: this.state.finished,
-                activeBoard: position, currentPlayer: newPlayer
+            this.setState( { boardValues: this.state.boardValues,
+                activeBoard: position
             });
 
         } else {
-            this.setState( { boardValues: this.state.boardValues, finished: this.state.finished,
-                activeBoard: 10, currentPlayer: newPlayer
+            this.setState( { boardValues: this.state.boardValues,
+                activeBoard: 10
             });
         }
     }
@@ -87,11 +89,11 @@ class Container extends React.Component<ContainerProps, ContainerState> {
                 boards.push(
                     <Board
                         updateBoardValue={this.updateBoardValue}
-                        blocked={(this.state.finished === true ? true :
+                        blocked={(this.props.getFinishedValue() === true ? true :
                             (this.state.activeBoard !== 10 && this.state.activeBoard !== y))}
                         position={y}
                         getCurrentPlayer={() => {
-                            return this.state.currentPlayer;
+                            return this.props.getCurrentPlayer();
                         }}
                         updateActiveBoards={this.updateActiveBoards}
                     />
@@ -114,4 +116,4 @@ class Container extends React.Component<ContainerProps, ContainerState> {
 
 }
 
-export default Container;
+export default UltimateBoard;
